@@ -1,0 +1,171 @@
+/**
+* @fileOverview Original Bootstrap Mixins included below Hoa's
+* @name Mixins
+* @author mdaveshah, sstedman
+* @tested browsers FF 12, Chrome 18, Safari 5 on Mac
+*/
+
+//@import "variables";
+
+//
+// MIXINS - GUIDELINES
+//
+// * Use the parameter parens on all mixins--e.g., use .mixin() {}; not .mixin {}--(mixins.less should have no output on its own)
+// * Don't use mixins for browser prefixes--Autoprefixer will be run on the CSS file after the Less files are compiled.
+// * Set variables in the variables.less file.
+// * Use camelCase mixin names--e.g., dropShadow--it helps mixins stand out in a CSS file from native CSS properties.
+// * Leave no space between the mixin name and the opening parenthesis--e.g., mixin() {..}; not mixin () {..}
+//
+
+// THE BASICS
+// ==========
+
+// BORDER
+.borderRadius(@radius) {
+	border-radius: @radius;
+	background-clip: padding-box;
+}
+.box-sizing(@sizing) {
+	box-sizing: @sizing;
+}
+
+// SHADOW
+.dropShadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.innerShadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+// TRANSFORM
+.rotate(@deg) {
+	transform: rotate(@deg);
+}
+.scale(@ratio) {
+	transform: scale(@ratio);
+}
+.skew(@deg, @deg2) {
+	transform: skew(@deg, @deg2);
+	backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
+}
+.translate(@x, @y:0) {
+	transform: translate(@x, @y);
+}
+.translate3d(@x, @y: 0, @z: 0) {
+	transform: translate3d(@x, @y, @z);
+}
+
+// TRANSITION
+.transition(@transition) {
+	transition: @transition;
+}
+
+
+// THE BACKGROUND
+// ==============
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+#translucent {
+	.background(@color: @white, @alpha: 1) {
+		background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+	}
+	.border(@color: @white, @alpha: 1) {
+		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+		.background-clip(padding-box);
+	}
+}
+
+// THE [BACKGROUND] GRADIENTS
+// ========================
+
+// GRADIENTS
+#gradient {
+	.horizontal(@startColor: #555, @endColor: #333) {
+		background-color: mix(@startColor, @endColor);
+		background-image: linear-gradient(to right, @startColor, @endColor);
+		background-repeat: repeat-x;
+	}
+	.vertical(@startColor: #555, @endColor: #333) {
+		background-color: mix(@startColor, @endColor, 60%);
+		background-image: linear-gradient(to bottom, @startColor, @endColor);
+		background-repeat: repeat-x;  // repeat-y??
+	}
+	.directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
+		background-color: mix(@startColor, @endColor);
+		background-image: linear-gradient(@deg, @startColor, @endColor);
+		background-repeat: repeat-x;
+	}
+	.horizontal-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+		background-color: mix(@midColor, @endColor, 80%);
+		background-image: linear-gradient(to right, @startColor, @midColor @colorStop, @endColor);
+		background-repeat: no-repeat;
+	}
+	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+		background-color: mix(@midColor, @endColor, 80%);
+		background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+		background-repeat: no-repeat;
+	}
+	.radial(@innerColor: #555, @outerColor: #333) {
+		background-color: mix(@outerColor, @innerColor);
+		background-image: radial-gradient(circle, @innerColor, @outerColor);
+		background-repeat: no-repeat;
+	}
+	.striped(@color: #555, @angle: 45deg) {
+		background-color: @color;
+		background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+	}
+}
+
+// FONTS (TODO: update it for PayPal)
+// --------------------------------------------------
+
+#font {
+	#family {
+		.serif() {
+			font-family: @serifFontFamily;
+		}
+		.sans-serif() {
+			font-family: @sansFontFamily;
+		}
+		.monospace() {
+			font-family: @monoFontFamily;
+		}
+	}
+	.shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+		font-size: @size;
+		font-weight: @weight;
+		line-height: @lineHeight;
+	}
+	.serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+		#font > #family > .serif;
+		#font > .shorthand(@size, @weight, @lineHeight);
+	}
+	.sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+		#font > #family > .sans-serif;
+		#font > .shorthand(@size, @weight, @lineHeight);
+	}
+	.monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+		#font > #family > .monospace;
+		#font > .shorthand(@size, @weight, @lineHeight);
+	}
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Optional hyphenation
+.hyphens(@mode: auto) {
+	word-wrap: break-word;
+	hyphens: @mode;
+}
+
+// Opacity
+.opacity(@opacity) {
+	opacity: @opacity;
+}

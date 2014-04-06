@@ -1,0 +1,64 @@
+/**
+* @fileOverview Button styles
+* @name Buttons
+* @author mdaveshah
+* @tested browsers FF , Chrome , Safari  on Mac
+*/
+
+//importing baseCSS styles
+@import "../../../public/components/baseCSS/build/less/paypal.less";
+
+@cornerRadius: 3/14;
+@buttonPadding: (44-14)/2/14; // (44-14)/2
+
+// common styles for the buttons
+.button {
+	padding: ~"@{buttonPadding}em";
+
+	display: inline-block;
+	border: 0 none;
+	border-radius: ~"@{cornerRadius}em";
+
+	font: 1em/1 @fontFamily;
+}
+
+// default blue action button
+.buttonDefault {
+	color: @white;
+	background: @bgButton;
+
+	&:hover,
+	&:focus {
+		color: @white;
+		background: @bgButtonHover;
+	}
+
+	&:active {
+		color: @white;
+		background: @bgButtonActive;
+	}
+}
+
+// secondary gray button
+.buttonSecondary {
+	color: @white;
+	background: @bgButtonSecondary;
+
+	&:hover,
+	&:focus {
+		color: @white;
+		background: @bgButtonSecondaryHover;
+	}
+
+	&:active {
+		color: @white;
+		background: @bgButtonSecondaryActive;
+	}
+}
+
+// disabled buttons have an 50% opacity reduction
+.button.disabled,
+input[disabled="disabled"],
+button[disabled="disabled"] {
+	opacity: .5;
+}

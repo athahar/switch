@@ -1,0 +1,37 @@
+<html lang="en" data-device-type="dedicated">
+	<head>
+		<meta charset="UTF-8">
+		<title>{pageTitle}</title>
+		<link href="../css/buttons.css" rel="stylesheet" />
+	</head>
+	<body>
+		<h1> Button styles </h1>
+		<section class="containerCentered">
+			<h2>Links styled as buttons</h2>
+			<div class="row-fluid">
+				{>"build/templates/buttonWidget" buttonType="anchor" buttonText="Primary Button" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="anchor" buttonText="Secondary Button" isSecondary="true" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" className="span3" buttonType="anchor" buttonText="Default Disabled Button" isDisabled="true" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="anchor" buttonText="Secondary Disabled Button" isSecondary="true" isDisabled="true" className="span3" buttonURL="1" /}
+			</div>
+		</section>
+		<section class="containerCentered">
+			<h2>Input type buttons</h2>
+			<div class="row-fluid">
+				{>"build/templates/buttonWidget" buttonType="input" buttonText="Primary Button" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="input" buttonText="Secondary Button" isSecondary="true" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" className="span3" buttonType="input" buttonText="Default Disabled Button" isDisabled="true" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="input" buttonText="Secondary Disabled Button" isSecondary="true" isDisabled="true" className="span3" buttonURL="1" /}
+			</div>
+		</section>
+		<section class="containerCentered">
+			<h2>Button tag</h2>
+			<div class="row-fluid">
+				{>"build/templates/buttonWidget" buttonType="button" buttonText="Primary Button" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="button" buttonText="Secondary Button" isSecondary="true" className="span3" buttonURL="1" /}
+				{>"build/templates/buttonWidget" className="span3" buttonType="button" buttonText="Default Disabled Button" isDisabled="true" buttonURL="1" /}
+				{>"build/templates/buttonWidget" buttonType="button" buttonText="Secondary Disabled Button" isSecondary="true" isDisabled="true" className="span3" buttonURL="1" /}
+			</div>
+		</section>
+	</body>
+</html>

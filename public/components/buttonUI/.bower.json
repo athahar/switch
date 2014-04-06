@@ -1,0 +1,23 @@
+{
+  "name": "buttons",
+  "main": "build/",
+  "version": "0.0.1",
+  "ignore": [
+    "Gruntfile.js",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "baseCSS": "~0.0.4"
+  },
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "6297313a465876dc49ec3e761dad345625b02248"
+  },
+  "_source": "git://github.paypal.com/UIEElements/buttons.git",
+  "_target": "~0.0.1",
+  "_originalSource": "buttonUI",
+  "_direct": true
+}

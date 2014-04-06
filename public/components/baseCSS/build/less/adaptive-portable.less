@@ -1,0 +1,60 @@
+/**
+ * @fileOverview Adaptive responsive styles for portable channels
+ * @name adaptive-portable
+ * @author mdaveshah
+ * @tested 
+ */
+
+body[data-device-type="tablet"] {
+
+	/* mini Tablet landscape/portrait and large tablet portrait mode 
+	 * max 1023px in portable channel
+	 * 6 columns grid
+	*/
+	@media (max-width: @portableMiniLandscapeMax) {
+	/**
+		* this should create .span1, .span2, .span3, .span4, .span5, .span6 
+		* span12 = col6, span10 = col5, span8 = col4, span6 = col3, span4=col2, span2=col1 
+		*/
+
+		.container-fluid {
+			padding: 0 @fluidGridGutterWidth1023;
+		}
+
+		.span12, .span11 {
+			.makeColumnFullWidth();
+		}
+		.span10, .span9 {
+			.makeColumn(5, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+		}
+
+		.span8, .span7 {
+			.makeColumn(4, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+		}
+
+		.span6, .span5 {
+			.makeColumn(3, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+		}
+		
+		.span4, .span3 {
+			.makeColumn(2, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+		}
+
+		.span2, .span1 {
+			.makeColumn(1, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+		}
+	}
+
+	/* Tablet landscape mode 
+	 * 1024px+ in portable channel
+	 * 12 columns grid
+	*/
+	@media (min-width: @portablelgLandscapeMin) {
+
+		#grid > .fluid();
+
+		.row-fluid .span12 {
+			.makeColumnFullWidth();
+		}
+	}
+}

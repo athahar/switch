@@ -1,0 +1,150 @@
+/**
+ * @fileOverview Variables contains paypal brand specific variables
+ * @name Variables
+ * @author mdaveshah
+ * @tested none yet
+ */
+
+// Global values
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black: #000;
+@grayDarker: #333;
+@grayDark: #444;
+@gray: #666;
+@grayLight: #999;
+@grayLighter: #eee;
+@white: #fff;
+
+
+// Accent colors
+// -------------------------
+/* PayPal secondary colors */
+@palBlue: #0079c1;
+@green: #3ea134;
+@orange: #d7ae0a;
+@red: #bb1827;
+
+/* font colors */
+@textColorDefault: @gray;
+@textColorBlue: @palBlue;
+@textColorGreen: #329e47;
+@textColorRed: #b32317;
+@textColorWhite: @white;
+
+@textColorOrangeOnGrey: #d1834a;
+@textColorOrangeOnWhite: #dca500;
+
+@textColorLargeBold: #717074;
+@textColorSmallLight: @grayLight;
+@textColorRegular: @gray;
+
+@headingsColor: @grayDark;
+@headingsColorLight: #4d4d4d;
+@tapHighlightColor: rgba(0, 0, 0, 0.2);
+
+/* PayPal-specific */
+@tooltipBorder:         #cee0eb;
+@tooltipBackground:     #f4f8fb;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground: #f8f8f8;
+
+@bgButton: @palBlue;
+@bgButtonHover: #0087db;
+@bgButtonActive: #0067a8;
+
+@bgButtonSecondary: #777;
+@bgButtonSecondaryHover: #909090;
+@bgButtonSecondaryActive: #5d5d5d;
+
+// Links
+// -------------------------
+@linkColor: @palBlue;
+@linkColorHover:@palBlue;
+
+
+// Typography
+// -------------------------
+@fontFamily: helvetica, arial, sans-serif;
+@fontFamilyLight: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+@fontFamilyUltraLight: "HelveticaNeueUltraLight", "HelveticaNeue-UltraLight","HelveticaNeue-Ultra-Light",
+						"Helvetica Neue Ultra Light", "HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
+
+/* Default font for buttons is arial for readability */
+@buttonFamily: arial, helvetica, sans-serif;
+
+@baseFontSize: 14px;
+@baseFontFamily: @fontFamily;
+@baseLineHeight: 20px;
+@buttonLineHeight: 44px;
+@inputHeight: 44px;
+
+@headingsFontFamily: @fontFamilyLight;
+@headingsFontWeight: 300;    // instead of browser default, 300
+
+@fontSizeLarge:         @baseFontSize * 1.25; // ~18px
+@fontSizeSmall:         @baseFontSize * 0.85; // ~12px
+@fontSizeMini:          @baseFontSize * 0.75; // ~11px
+
+// @paddingLarge:          11px 19px; // 44px
+// @paddingSmall:          2px 10px;  // 26px
+// @paddingMini:           0 6px;   // 22px
+
+@baseBorderRadius:      4px;
+@borderRadiusLarge:     6px;
+@borderRadiusSmall:     3px;
+
+
+// GRID
+// --------------------------------------------------
+
+// Breakpoints (to do: change px to ems)
+// --------------------------
+@mobilePortraitMax: 479px;
+@mobileLandscapeMin: 480px;
+
+@portableMiniPortraitMax: 767px;
+@portableMiniLandscapeMin: 768px;
+@portableMiniLandscapeMax: 1023px;
+@portableLgPortraitMin: 768px;
+@portablelgLandscapeMin: 1024px;
+
+@dedicatedMin: 959x;
+@dedicatedMax: 960px;
+
+
+// Default 960px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridMarginWidth: 		  10px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+/* <479 */
+@fluidGridColumnWidth479:    22.162162162162%;
+@fluidGridGutterWidth479:    3.78378378378367%;
+@fluidGridMarginWidth479:    3.75%;
+
+/* >480 */
+@fluidGridColumnWidth480:    13.513513513514%;
+@fluidGridGutterWidth480:    3.783783783784%;
+@fluidGridMarginWidth480:    3.75%;
+
+/* 960 to 1170 */
+@fluidGridColumnWidth960:      6.382978723404%;
+@fluidGridGutterWidth960:      2.083333333333%;
+@fluidGridMarginWidth960:      1.041666666667%;
+
+/* <1023 */
+@fluidGridColumnWidth1023:    13.978494623656%;
+@fluidGridGutterWidth1023:    3.225806451613%;
+@fluidGridMarginWidth1023:    3.5%;

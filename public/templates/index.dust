@@ -1,0 +1,59 @@
+{>"layouts/master" /}
+
+{<body}
+
+	<div class="container"> 
+	    <h1> Welcome to Switch!</h1>
+	    <div class="switch-container clearfix">
+		    <div class="switch-container-content row col-md-12 clearfix ">
+		    	<div class="col-md-3 pull-left" id="source-career">
+		    		<p class="lead">Are you currently a </p>
+		    		<div class="radio">
+					  <label>
+					    <input type="radio" name="sourceOption" id="engineer" value="engineer">
+					    Engineer
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="sourceOption" id="Designer" value="Designer">
+					    Designer
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="sourceOption" id="qa" value="qa">
+					    QA
+					  </label>
+					</div>
+		    	</div>	    		    
+		    	<div class="col-md-3 pull-left hidden" id="destination-career">
+			    	<p class="lead"> Wanting to become a </p>
+			    	<div class="radio">
+						  <label>
+						    <input type="radio" name="destinationOption" id="pmm" value="pmm">
+						    Product Marketing Manager
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="destinationOption" id="tpm" value="tpm">
+						    Technical Product Manager
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="destinationOption" id="cpm" value="cpm">
+						    Consumer product manager
+						  </label>
+						</div>
+			    	</div>
+		    </div>
+		    <div class="row col-md-offset-1 col-md-8 hidden" id="getStarted">
+		    	<a href="/getStarted" role="button" class="btn btn-primary"> Plan your career now </a>
+
+		    	<!-- <button type="button" class="btn btn-primary btn-lg">Get Started</button> -->
+		    </div>
+	    </div>
+    </div>
+{/body}

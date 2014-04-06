@@ -1,0 +1,63 @@
+/**
+ * @fileOverview Contains Utility styles
+ *
+ * @name utilities
+ * @author mdaveshah
+ * @tested none yet
+ */
+
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}
+
+// For Affix plugin
+.affix {
+  position: fixed;
+}
+
+// Clearfix
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+	 display: table;
+	 content: "";
+	 // Fixes Opera/contenteditable bug:
+	 // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+	 line-height: 0;
+  }
+  &:after {
+	 clear: both;
+  }
+}
+
+//
+// PayPal-specific Utility classes
+// --------------------------------------------------
+.accessAid {
+	display: block;
+	left: -500em;
+	line-height: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -9999em;
+	top: 0;
+}

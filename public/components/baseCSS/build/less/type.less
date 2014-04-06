@@ -1,0 +1,166 @@
+/**
+ * @fileOverview Typographic Hierarchy
+ 
+ * @name type
+ * @author mdaveshah
+ * @tested none yet
+ */
+
+// Headings
+// -------------------------
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	margin: (@baseLineHeight / 2) 0;
+	font-family: @headingsFontFamily;
+	font-weight: @headingsFontWeight;
+	line-height: @baseLineHeight;
+	color: @headingsColor;
+	text-rendering: optimizelegibility; // Fix the character spacing for headings
+	
+	small {
+		font-weight: normal;
+		line-height: 1;
+		color: @headingsColorLight;
+	}
+}
+
+
+/* TODO: Update this after getting the values from Mai Tran */
+h1,
+h2,
+h3 { 
+	line-height: @baseLineHeight * 2; 
+}
+
+h1 { 
+	font-size: @baseFontSize * 2.92307; 
+} 
+
+h2 { 
+	font-size: @baseFontSize * 1.69230; 
+} 
+
+h3 { 
+	font-size: @baseFontSize * 1.69230;
+}
+
+h4 { 
+	font-size: @baseFontSize * 1.25; 
+}
+
+h5 { 
+	font-size: @baseFontSize; 
+}
+
+h6 { 
+	font-size: @baseFontSize * 0.85; 
+}
+
+
+// Body text
+// -------------------------
+
+p {
+	margin: 0 0 @baseLineHeight / 2;
+}
+
+// Emphasis & misc
+// -------------------------
+
+small { 
+	font-size: @fontSizeSmall;
+}
+
+.text-left { 
+	text-align: left; 
+}
+
+.text-right	{ 
+	text-align: right; 
+}
+
+.text-center { 
+	text-align: center; 
+}
+
+// Lists
+// --------------------------------------------------
+
+// Unordered and Ordered lists
+ul, ol {
+	padding: 0;
+	margin: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	margin-bottom: 0;
+}
+
+li {
+	line-height: @baseLineHeight;
+}
+
+// Remove default list styles
+ul.unstyled,
+ol.unstyled {
+	margin-left: 0;
+	list-style: none;
+}
+
+// Single-line list items
+ul.inline,
+ol.inline {
+	margin-left: 0;
+	list-style: none;
+	> li {
+		display: inline-block;
+		//.ie7-inline-block();
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+// Description Lists
+dl {
+	margin-bottom: @baseLineHeight;
+}
+
+dt,
+dd {
+	line-height: @baseLineHeight;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-left: @baseLineHeight / 2;
+}
+
+// MISC
+// ----
+
+// Quotes
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+	content: "";
+}
+
+// Addresses
+address {
+	display: block;
+	margin-bottom: @baseLineHeight;
+	font-style: normal;
+	line-height: @baseLineHeight;
+}

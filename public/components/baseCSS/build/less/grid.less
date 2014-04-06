@@ -1,0 +1,181 @@
+/**
+* @fileOverview PayPal Default Grid
+*	without any media queries. This is for browsers that dont
+* understand media queries
+* @name grid
+* @author mdaveshah
+* @tested none yet
+*/
+
+// Centered container element
+.containerFixed() {
+  margin-right: auto;
+  margin-left: auto;
+  .box-sizing(content-box);
+  .clearfix();
+}
+
+// creates a centered container with correct gutter and margin values for the container
+// you can define the width of this container using containerWidth mixin
+.containerCentered() {
+	.containerFixed();
+
+  html[data-device-type="dedicated"] & {
+    min-width: 960px;
+    max-width: 1170px;
+    padding: 0 @fluidGridMarginWidth960;
+  }
+
+  html[data-device-type="portable"] & {
+    @media (max-width: @portableMiniLandscapeMax) {
+      padding: 0 @fluidGridMarginWidth1023;
+    }
+
+    @media (min-width: @portablelgLandscapeMin) {
+      min-width: 960px;
+      max-width: 1170px;
+      padding: 0 @fluidGridMarginWidth960;
+    }
+  }
+
+  html[data-device-type="mobile"] & {
+    @media (max-width: @mobilePortraitMax) {
+      padding: 0 @fluidGridMarginWidth479;
+    }
+
+    @media (min-width: @mobileLandscapeMin) {
+      padding: 0 @fluidGridMarginWidth480;
+    }
+  }
+}
+
+// creates a container that spansX columns
+// and you can also specify the 
+.containerWidth(@columns: 1, @gridColumnWidth: 60px, @gridGutterWidth: 20px) {
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+}
+
+// Make a Grid
+// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
+.makeColumn(@columns: 1, @offset: 0, @gridColumnWidth: 60px, @gridGutterWidth: 20px ) {
+  float: left;
+  margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
+  .containerWidth(@columns, @gridColumnWidth, @gridGutterWidth);
+
+  .box-sizing(border-box);
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+// makes a column span the entire row
+.makeColumnFullWidth() {
+   width: 100%;
+   margin-left: 0;
+   float: none;
+}
+
+// makes an input a block level element
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  .box-sizing(border-box); // Makes inputs behave like true block-level elements
+} 
+
+// The Grid
+#grid {
+
+  .fluid (@colWidth: @fluidGridColumnWidth960, @gutterWidth:@fluidGridGutterWidth960) {
+
+    .spanX (@index) when (@index > 0) {
+      .span@{index} { .span(@index); }
+      .spanX(@index - 1);
+    }
+    .spanX (0) {}
+
+    .offsetX (@index) when (@index > 0) {
+      .offset@{index} { .offset(@index); }
+      .offset@{index}:first-child { .offsetFirstChild(@index); }
+      .offsetX(@index - 1);
+    }
+    .offsetX (0) {}
+
+    .offset (@columns) {
+      margin-left: (@colWidth * @columns) + (@gutterWidth * (@columns - 1)) + (@gutterWidth*2);
+  	  *margin-left: (@colWidth * @columns) + (@gutterWidth * (@columns - 1)) - (.5) + (@gutterWidth*2) - (.5);
+    }
+
+    .offsetFirstChild (@columns) {
+      margin-left: (@colWidth * @columns) + (@gutterWidth * (@columns - 1)) + (@gutterWidth);
+      *margin-left: (@colWidth * @columns) + (@gutterWidth * (@columns - 1)) - (.5) + @gutterWidth - (.5);
+    }
+
+    .span (@columns) {
+      width: (@colWidth * @columns) + (@gutterWidth * (@columns - 1));
+      *width: (@colWidth * @columns) + (@gutterWidth * (@columns - 1)) - (.5);
+    }
+    
+    .row-fluid {
+      width: 100%;
+      .clearfix();
+      .box-sizing(border-box);
+      
+      [class*="span"] {
+        display: block;
+        margin-left: @gutterWidth;
+        *margin-left: @gutterWidth - (.5);
+        float: left;
+        .box-sizing(border-box);
+      }
+      
+      [class*="span"]:first-child {
+        margin-left: 0;
+      }
+
+      // generate .spanX and .offsetX
+      .spanX (@gridColumns);
+      .offsetX (@gridColumns);
+    }
+
+  }
+
+  .input(@gridColumnWidth: @fluidGridColumnWidth960, @gridGutterWidth:@fluidGridGutterWidth960) {
+    .spanX (@index) when (@index > 0) {
+      input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index} { .span(@index); }
+      .spanX(@index - 1);
+    }
+    .spanX (0) {}
+
+    .span(@columns) {
+      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 14;
+    }
+
+    input,
+    textarea,
+    .uneditable-input {
+      margin-left: @gridGutterWidth; // override margin-left from core grid system
+    }
+
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"] {
+      margin-left: @gridGutterWidth;
+    }
+
+    // generate .spanX
+    .spanX (@gridColumns);
+
+  }
+}
+
+// Reset utility classes due to specificity
+[class*="span"].hide,
+.row-fluid [class*="span"].hide {
+  display: none;
+}
+
+[class*="span"].pull-right,
+.row-fluid [class*="span"].pull-right {
+  float: right;
+}

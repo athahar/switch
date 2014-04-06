@@ -1,0 +1,76 @@
+/**
+ * @fileOverview Adaptive responsive styles for mobile channels
+ * @name adaptive-mobile
+ * @author mdaveshah
+ * @tested 
+ */
+
+body[data-device-type="mobile"] {
+
+	/* Phone Landscape mode 
+	 * upto 479px in mobile channel
+	 * 4 columns grid
+	**/
+
+	@media (max-width: @mobilePortraitMax) {
+	/**
+		* this should create .span1, .span2, .span3, .span4 
+		* span12 = col4, span9 = col3, span6 = col2, span3 = col1 
+		*/
+
+		.span12, .span11, .span10 {
+			.makeColumnFullWidth();
+		}
+
+		.span9, .span8, .span7 {
+			.makeColumn(3, 0, @fluidGridColumnWidth479, @fluidGridGutterWidth479);
+		}
+
+		.span6, .span5, .span4 {
+			.makeColumn(2, 0, @fluidGridColumnWidth479, @fluidGridGutterWidth479);
+
+			&:nth-child(2n-1) {
+				margin-left: 0;
+			}
+		}
+
+		.span3, .span2, .span1 {
+			.makeColumn(1, 0, @fluidGridColumnWidth479, @fluidGridGutterWidth479);
+		}
+	}
+
+	/* Phone Landscape mode 
+	 * 480px to  channel
+	 * 6 columns grid
+	**/
+	@media (min-width: @mobileLandscapeMin) {
+	/**
+		* this should create .span1, .span2, .span3, .span4, .span5, .span6 
+		* span12 = col6, span10 = col5, span8 = col4, span6 = col3, span4=col2, span2=col1 
+		*/
+
+		.span12, .span11 {
+			.makeColumnFullWidth();
+		}
+
+		.span10, .span9 {
+			.makeColumn(5, 0, @fluidGridColumnWidth480, @fluidGridGutterWidth480);
+		}
+
+		.span8, .span7 {
+			.makeColumn(4, 0, @fluidGridColumnWidth480, @fluidGridGutterWidth480);
+		}
+
+		.span6, .span5 {
+			.makeColumn(3, 0, @fluidGridColumnWidth480, @fluidGridGutterWidth480);
+		}
+
+		.span4, .span3 {
+			.makeColumn(2, 0, @fluidGridColumnWidth480, @fluidGridGutterWidth480);
+		}
+
+		.span2, .span1 {
+			.makeColumn(1, 0, @fluidGridColumnWidth480, @fluidGridGutterWidth480);
+		}
+	}
+}

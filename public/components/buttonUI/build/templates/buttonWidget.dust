@@ -1,0 +1,29 @@
+{!
+	Partial used for creating a button on white and dark background
+
+	@param buttonType		Type of button 		anchor | input | button
+	@param isSecondary		Is it a secondary button style?		boolean
+	@param isDisabled		Is it a disabled button style?		boolean
+	@param buttonText		text value for the content (can be properties or 4cb)
+	@param buttonURL		Link for the anchor styled as a button
+	@param className		optional className if needed
+	@param idName			optional id if needed
+!}
+
+{@select key="{buttonType}"}
+	{@eq value="anchor"}
+		<a href="{buttonURL}" {?idName}id="{idName}" {/idName} class="button{?className} {className}{/className}{?isSecondary} buttonSecondary{:else} buttonDefault{/isSecondary} {?isDisabled} disabled{/isDisabled}">
+			{buttonText}
+		</a>
+	{/eq}
+	{@eq value="input"}
+		<input type="submit" {?idName}id="{idName}" {/idName} class="button{?className} {className}{/className}
+		{?isSecondary} buttonSecondary{:else} buttonDefault{/isSecondary}
+		{?isDisabled} disabled{/isDisabled}" value="{buttonText}" />
+	{/eq}
+	{@eq value="button"}
+		<button type="button" {?idName}id="{idName}" {/idName} class="button{?className} {className}{/className}
+		{?isSecondary} buttonSecondary{:else} buttonDefault{/isSecondary}
+		{?isDisabled} disabled{/isDisabled}">{buttonText}</button>
+	{/eq}
+{/select}

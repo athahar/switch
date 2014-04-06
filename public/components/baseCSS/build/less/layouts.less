@@ -1,0 +1,56 @@
+/**
+* @fileOverview Common layouts on top of the base grid
+* @name layouts
+* @author mdaveshah
+* @tested none yet
+*/
+
+// Container (centered, fixed-width layouts)
+.container {
+	.containerFixed();
+}
+
+.containerCentered {
+	.containerCentered();
+}
+
+html[data-device-type="mobile"] {
+	// make something full width on visible-phone
+	.span4Mobile {
+		.makeColumnFullWidth();
+	}
+}
+
+//create equal height columns
+.containerEqualHeights {
+	overflow: hidden;
+
+	> .row-fluid > [class*="span"] {
+		margin-bottom: -99em;
+		padding-bottom: 99em;
+	}
+}
+
+// 4 containers in a row on desktop (12 column grid) -> 4d
+// switches to 2 containers in a row on tablet and mobile (6 column grid) ->2p
+// switches to full width on a mobile portrait (4 column grid) -> 1m
+.container4d2p1m {
+	html[data-device-type="portable"] & {
+		@media (max-width: @portableMiniLandscapeMax) {
+			> .row-fluid > [class*="span"] {
+				.makeColumn(3, 0, @fluidGridColumnWidth1023, @fluidGridGutterWidth1023);
+
+				&:nth-child(2n+1) {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	html[data-device-type="mobile"] & {
+		// make something full width on visible-phone
+		> .row-fluid > [class*="span"] {
+			.makeColumnFullWidth();
+		}
+	}
+}

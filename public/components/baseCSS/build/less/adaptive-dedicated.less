@@ -1,0 +1,16 @@
+/****
+	* @fileOverview Adaptive responsive styles for dedicated channels
+	* @name adaptive-dedicated
+	* Will be a fixed grid center aligned above 960px with max width of 1170px
+	* 12 columns grid
+	* Also acts as the default grid for the webapp
+	* @author mdaveshah
+	* @tested
+****/
+
+// creates the grid using default mixin
+#grid > .fluid();
+
+.row-fluid .span12 {
+	.makeColumnFullWidth();
+}

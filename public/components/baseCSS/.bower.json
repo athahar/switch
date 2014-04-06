@@ -1,0 +1,20 @@
+{
+  "name": "baseCSS",
+  "main": "build/",
+  "version": "0.0.5",
+  "ignore": [
+    "Gruntfile.js",
+    "bower.json",
+    "package.json"
+  ],
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.5",
+    "commit": "a8fcbff0a5d6e00db4193df0731de6736e65e85e"
+  },
+  "_source": "git://github.paypal.com/UIE-Components/BaseCSS.git",
+  "_target": "~0.0.5",
+  "_originalSource": "baseCSS",
+  "_direct": true
+}
